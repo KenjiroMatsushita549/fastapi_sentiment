@@ -1,15 +1,13 @@
 {
-    "devCommand": "uvicorn api:app --host 0.0.0.0 --port 3000",
-    "builds": [
-        {
-            "src": "api.py",
-            "use": "@vercel/python"
-        }
-    ],
+    "builds": [{
+        "src": "app/api.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb" }
+    }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "api.py"
+            "dest": "app/api.py"
         }
     ]
 }
